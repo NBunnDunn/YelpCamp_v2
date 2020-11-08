@@ -4,7 +4,7 @@
   "description": "Refactored and Revamped YC!",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node app.js"
   },
   "author": "NDunn",
   "license": "ISC",
