@@ -1,0 +1,54 @@
+<% layout('layouts/userBoilerPlate')%>
+<div class="container-fluid mainCont">
+        <div class="row mainRow no-pad no-gutters regRow">
+            <div class="col-md-6 sideCont regLogin">
+                <div class="LHS">
+                    <div class="textCont">
+                        <h2 class='regTitle'>Create an Account</h2>
+						<form action="/register" method="POST" class="validated-form" novalidate>
+							<div class='inputCont'>
+								<label class="form-label" for="username">Username</label>
+								<input class="form-control" type="text" id="username" name="username" autofocus required>
+								<div class="valid-feedback">Looks good!</div>
+                            </div>
+							<div class='inputCont'>
+                            	<label class="form-label" for="email">Email</label>
+                            	<input class="form-control" type="email" id="email" name="email" required>
+                            	<div class="valid-feedback">Looks good!</div>
+                        	</div>
+							<div class='inputCont'>
+								<label class="form-label" for="password">Password</label>
+								<input class="form-control" type="password" id="password" name="password" required>
+								<div class="valid-feedback">Looks good!</div>
+                            </div>
+							<button class="btn loginBtn">Register</button>
+						</form>
+                    </div>
+                </div>
+            </div>
+            	<div class="col-md-6 sideCont photoCont">
+                	<div class="RHS">
+                   		<h2 class='rightHead'>Welcome to YelpCamp</h2>
+                    	<h5 class='regText'>Create an account to access hundreds of campgrounds</h5>
+					</div>
+            </div>
+        </div>
+    </div>
+<script>(function () {
+  'use strict'
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.validated-form')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()</script>

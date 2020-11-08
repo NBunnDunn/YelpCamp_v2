@@ -1,0 +1,137 @@
+.mainCont {
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.mainRow {
+	height: 535px;
+	max-width: 750px;
+}
+.row.no-pad {
+	margin-right: 0;
+	margin-left: 0;
+}
+.row.no-pad > [class*='col-'] {
+	padding-right: 0;
+	padding-left: 0;
+}
+.col {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+.LHS {
+	height: 100%;
+	text-align: center;
+	border-left: 3px solid #292b2c;	
+	border-right: 3px solid #292b2c;
+	border-top-left-radius: 2.5%;
+	border-bottom-left-radius: 2.5%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+.textCont {
+	background-color: #2d2d2d;
+	background-size: cover;
+	border-radius: 2.5%;
+	border: 3px solid #2a633b;
+	padding: 10px;
+	color: #fff;
+}
+.inputCont {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 5px;
+	font-weight: 550;
+}
+.form-control {
+	border: 2px solid #2a633b;
+	width: 75%;
+}
+.loginBtn {
+	border: 2px solid #2a633b;
+	color: #fff;
+	background-color: #2a633b;
+	font-weight: 550;
+	width: 45%;
+	margin: 10px 0 5px;
+}
+.loginBtn:hover {
+	border: 1px solid #fff;
+	color: #fff;
+}
+.RHS {
+	height: 100%;
+	background-image: url('https://images.unsplash.com/photo-1571687949921-1306bfb24b72?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60');
+	background-position: center;
+	border-right: 3px solid #292b2c;
+	border-top-right-radius: 2.5%;
+	border-bottom-right-radius: 2.5%;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.LHS, .RHS {
+	border-top: 3px solid #292b2c;
+	border-bottom: 3px solid #292b2c;
+	
+}
+.formCont {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: space-between;
+}
+.regText {
+	margin: 10px 0;
+	text-align:center;
+	line-height: 25px;
+}
+/* Responsive Sizes */
+@media only screen and (max-width: 768px) {
+	
+	.mainRow {
+		height: 750px;
+		flex-direction: column-reverse;
+		align-items: center;
+	}
+	.sideCont {
+		/* height: 40vw;  */
+		width: 350px; 
+	}
+	.photoCont {
+		height: 260px; 
+		
+	}
+	.loginCont {
+		height: 460px; 	
+	}
+	.LHS, .RHS {
+		border: 3px solid #292b2c;
+	}
+	.LHS {
+		border-bottom-right-radius: 2.5%;
+		border-bottom-left-radius: 2.5%;
+		border-top-left-radius: 0;
+	}
+	.RHS {
+		border-top-left-radius: 2.5%;
+		border-bottom-right-radius: 0;
+	}
+	.textCont {
+		width: 75%;
+	}
+	.regRow {
+		height: 800px;
+	}
+	.regLogin {
+		height: 500px;
+	}
+}
