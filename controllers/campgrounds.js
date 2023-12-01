@@ -1,7 +1,10 @@
+if(process.env.NODE_ENV !== 'production') {
+	const dotEnvResult = require('dotenv').config();
+}
 const Campground = require('../models/campground');
 const {cloudinary} = require('../cloudinary');
 const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
-mapBoxToken = process.env.MAPBOX_TOKEN;
+const mapBoxToken = process.env.MAPBOX_TOKEN;
 const geocoder = mbxGeocoding({accessToken: mapBoxToken});
 
 module.exports.index = async(req,res,next) => {

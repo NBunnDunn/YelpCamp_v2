@@ -1,5 +1,5 @@
 if(process.env.NODE_ENV !== 'production') {
-	require('dotenv').config();
+	const dotEnvResult = require('dotenv').config();
 }
 
 const express = require('express');
@@ -19,9 +19,10 @@ const cgRoutes = require('./routes/campgrounds');
 const rvRoutes = require('./routes/reviews');
 const userRoutes = require('./routes/user');
 const User = require('./models/user');
-const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/yelp-camp";
+const dbUrl = process.env.DB_URL;
 const app = express(); 
 
+// Connect to DB
 mongoose.connect(dbUrl, {
 	useNewUrlParser: true, useCreateIndex: true, 
 	useUnifiedTopology: true, useFindAndModify: false
@@ -32,7 +33,7 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', ()=> {
 	console.log('DB Connected!');
 });
-const secret = process.env.SECRET || 'simpleSecret';
+const secret = process.env.DB_SECRET;
 const store = new MongoDBStore({
 	url : dbUrl,
 	secret,
@@ -117,7 +118,7 @@ app.use((err, req, res, next) => {
 //================ End of routes ================
 
 //Server config
-const port = process.env.PORT || 3000
+const port = process.env.NODE_ENV === 'production' ? PORT : 3000;
 app.listen(port, ()=> {
-	console.log('Server started!');
+	console.log(`Server started on ${port}`);
 });
