@@ -9,21 +9,7 @@ function getRandomDate() {
     // Calculate the past date
     const pastDate = new Date(now);
     pastDate.setDate(pastDate.getDate() - daysBack);
-
-    // Format the output
-    if (daysBack < 7) {
-        return `${daysBack} days ago`;
-    } else if (daysBack < 14) {
-        return '1 week ago';
-    } else if (daysBack < 21) {
-        return '2 weeks ago';
-    } else if (daysBack < 28) {
-        return '3 weeks ago';
-    } else if (daysBack < 35) {
-        return '4 weeks ago';
-    } else {
-        return `Posted: ${pastDate.toLocaleDateString('en-US')}`; // Formats date as mm/dd/yy
-    }
+    return pastDate;
 }
 
 module.exports = getRandomDate;

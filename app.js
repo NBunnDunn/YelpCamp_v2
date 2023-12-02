@@ -118,7 +118,7 @@ app.use((err, req, res, next) => {
 //================ End of routes ================
 
 //Server config
-const port = process.env.NODE_ENV === 'production' ? PORT : 3000;
+const port = process.env.NODE_ENV === 'production' ? port : 3000;
 app.listen(port, ()=> {
 	console.log(`Server started on ${port}`);
 });

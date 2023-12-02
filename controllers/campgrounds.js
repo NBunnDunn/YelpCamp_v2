@@ -25,13 +25,31 @@ module.exports.createCG = async (req,res,next) => {
 	campground.geometry = geoData.body.features[0].geometry;	
 	campground.images = req.files.map(f =>({url: f.path, fileName: f.filename}));
 	campground.author = req.user._id;
+	campground.postDate = new Date();
 	await campground.save();
-	console.log(campground);
 	req.flash('success', 'Successfully made new campground!');
 	res.redirect(`/campgrounds/${campground._id}`);
 };
 
 module.exports.showCG = async(req,res,next) =>{
+	function formatDate(dateObj) {
+		const now = new Date();
+    	const daysBack = Math.min(Math.floor((now - dateObj) / (1000 * 60 * 60 * 24)), 365);
+		// Format the output
+		if (daysBack < 7) {
+        	return `${daysBack} days ago`;
+		} else if (daysBack < 14) {
+			return '1 week ago';
+		} else if (daysBack < 21) {
+			return '2 weeks ago';
+		} else if (daysBack < 28) {
+			return '3 weeks ago';
+		} else if (daysBack < 35) {
+			return '4 weeks ago';
+		} else {
+			return `Posted: ${dateObj.toLocaleDateString('en-US')}`; // Formats date as mm/dd/yy
+		}
+	}
 	//nested populate to access author of reviews (which is on the campground model)
 	const campground = await Campground.findById(req.params.id).populate({
 		path:'reviews',
@@ -43,7 +61,7 @@ module.exports.showCG = async(req,res,next) =>{
 		req.flash('error', 'Campground was not found!');
 		return res.redirect('/campgrounds');
 	}
-	res.render('campgrounds/show', {campground});
+	res.render('campgrounds/show', {campground, formatDate});
 };
 
 module.exports.editCG = async(req, res,next) => {
